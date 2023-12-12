@@ -8,7 +8,7 @@ const button = tv({
     size: {
       default: 'h-10 px-4',
       sm: 'h-8 px-3',
-      xs: 'h-6 px-2 text-xs'
+      xs: 'h-6 px-2 text-xs',
     },
     // primary: {}, //A variação primary pode ser definida na base
     secondary: {
@@ -18,25 +18,32 @@ const button = tv({
       true: 'bg-green-400 hover:bg-green-500',
     },
     danger: {
-      true: 'bg-red-500 text-white hover:bg-red-700 hover:text-gray-100'
-    }
+      true: 'bg-red-500 text-white hover:bg-red-700 hover:text-gray-100',
+    },
   },
   defaultVariants: {
     size: 'default',
-    success: false
+    success: false,
   },
 })
 
 export type ButtonProps = ComponentProps<'button'> & VariantProps<typeof button>
 
-export function Button({ success, danger, secondary, size, className, ...props }: ButtonProps) {
+export function Button({
+  success,
+  danger,
+  secondary,
+  size,
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <button
       data-success={success}
       className={button({ success, danger, secondary, size, className })}
       {...props}
     >
-      {success ? <CheckCircle className='w-5 h-5'/> : props.children}
+      {success ? <CheckCircle className="w-5 h-5" /> : props.children}
     </button>
   )
 }
