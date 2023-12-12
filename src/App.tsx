@@ -4,7 +4,7 @@ export function App() {
 
   return (
     <>
-      <div className="flex flex-row items-center justify-center gap-6 h-screen bg-zinc-900">
+      <div className="font-display flex flex-row items-center justify-center gap-6 h-screen bg-gray-700">
         <div className='flex flex-col items-center justify-center gap-3'>
           <Button size='xs'>Primary xs</Button>
           <Button size='sm'>Primary sm</Button>
