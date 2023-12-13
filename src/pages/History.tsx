@@ -1,3 +1,7 @@
 export function History() {
-  return <h1 className="text-lg text-white">History</h1>
+  return (
+    <div>
+      <h1 className="text-4xl text-white">History</h1>
+    </div>
+  )
 }
