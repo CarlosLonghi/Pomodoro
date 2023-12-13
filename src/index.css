@@ -4,4 +4,13 @@
 
 nav a.active {
   color: #00875F;
+  border-color: #00875F;
+}
+nav a.active:hover {
+  color: #00B37E;
+  border-color: #00B37E;
+}
+
+form input {
+  background: none;
 }
