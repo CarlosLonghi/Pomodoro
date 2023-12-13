@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
       white: '#FFFFFF',
@@ -12,7 +9,7 @@ export default {
         100: '#E1E1E6',
         200: '#C4C4CC',
         300: '#8D8D99',
-        400: '#7C7C8A',        
+        400: '#7C7C8A',
         500: '#323238',
         600: '#202024',
         700: '#121214',
@@ -21,25 +18,24 @@ export default {
       green: {
         400: '#00B37E',
         500: '#00875F',
-        700: '#015F43'
+        700: '#015F43',
       },
-  
+
       red: {
         500: '#F03847',
-        700: '#7A1921'
+        700: '#7A1921',
       },
 
       yellow: {
-        500: '#FBA94C'
-      }
+        500: '#FBA94C',
+      },
     },
     extend: {
       fontFamily: {
         display: 'Roboto, sans-serif',
-        timer: 'Roboto Mono, monospace'
-      }
+        timer: 'Roboto Mono, monospace',
+      },
     },
   },
   plugins: [],
 }
-
