@@ -7,7 +7,7 @@ export function Home() {
         <div className="text-gray-100 text-base flex gap-2 items-center flex-wrap">
           <label htmlFor="task">Vou trabalhar em</label>
           <input
-            className="input-task mx-2 border-b-2 border-gray-100 outline-none focus:border-green-500"
+            className="input-task mx-2"
             type="text"
             id="task"
             list="task-suggestions"
@@ -21,7 +21,7 @@ export function Home() {
 
           <label htmlFor="minutesAmount">durante</label>
           <input
-            className="input-minutes mx-2 w-16 border-b-2 border-gray-100 outline-none focus:border-green-500"
+            className="input-minutes mx-2 w-16"
             type="number"
             id="minutesAmount"
             placeholder="00"
@@ -43,7 +43,10 @@ export function Home() {
           <span className="span-timer">0</span>
         </div>
 
-        <button className="button-timer-submit" type="submit">
+        <button
+          className="flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-green-500 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed focus:bg-green-700 focus-visible:outline-none"
+          type="submit"
+        >
           <Play size={30} />
           Iniciar
         </button>
