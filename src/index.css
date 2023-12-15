@@ -11,6 +11,23 @@ nav a.active:hover {
   border-color: #00B37E;
 }
 
-form input {
-  background: none;
+@layer utilities {
+  form input {
+    background: none;
+  }
+  .input-task::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
+  .nav-link {
+    @apply text-white border-b-2 pb-1 border-b-gray-500 hover:border-b-green-500 transition duration-200 ease-in-out outline-none focus:border-green-400;
+  }
+}
+
+@layer components {
+  .span-timer {
+   @apply py-8 px-4 bg-gray-500 rounded overflow-hidden cursor-default; 
+  }
+  .button-timer-submit {
+    @apply flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-green-500 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed;
+  }
 }
