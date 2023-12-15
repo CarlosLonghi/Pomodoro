@@ -12,6 +12,7 @@ nav a.active:hover {
 }
 
 @layer utilities {
+  /* Form */
   form input {
     background: none;
   }
@@ -20,6 +21,30 @@ nav a.active:hover {
   }
   .nav-link {
     @apply text-white border-b-2 pb-1 border-b-gray-500 hover:border-b-green-500 transition duration-200 ease-in-out outline-none focus:border-green-400;
+  }
+
+  /* Table */
+  .history-table {
+    min-width: 26rem;
+  }
+  th {
+    @apply bg-gray-400 text-gray-100 text-sm text-left px-5 py-4
+  }
+  th:first-child{
+    @apply rounded-tl-lg pl-6
+  }
+  th:last-child {
+    @apply rounded-tr-lg pr-6
+  }
+
+  td {
+    @apply bg-gray-500 border-t-4 border-gray-600 p-4 text-sm text-gray-200
+  }
+  td:first-child{
+    @apply pl-6 w-1/2
+  }
+  td:last-child {
+    @apply pr-6
   }
 }
 
