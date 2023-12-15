@@ -4,7 +4,7 @@ export function History() {
       <h1 className="text-2xl text-gray-100 text-center">Histórico</h1>
 
       <div className="flex-1 overflow-auto mt-8">
-        <table className="history-table w-full border-collapse">
+        <table className="w-full border-collapse">
           <thead>
             <tr>
               <th>Tarefa</th>
