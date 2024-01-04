@@ -1,3 +1,5 @@
+import { StatusTask } from '../components/StatusTask'
+
 export function History() {
   return (
     <main className="flex-1 px-12 py-8 flex flex-col">
@@ -16,24 +18,24 @@ export function History() {
 
           <tbody>
             <tr>
-              <td>Tarefa exemplo</td>
+              <td>Tarefa 1</td>
               <td>10 minutos</td>
               <td>há 1 mês</td>
-              <td>Concluído</td>
+              <StatusTask complete />
             </tr>
 
             <tr>
-              <td>Tarefa exemplo</td>
+              <td>Tarefa 2</td>
               <td>10 minutos</td>
               <td>há 1 mês</td>
-              <td>Concluído</td>
+              <StatusTask progress />
             </tr>
 
             <tr>
-              <td>Tarefa exemplo</td>
+              <td>Tarefa 3</td>
               <td>10 minutos</td>
               <td>há 1 mês</td>
-              <td>Concluído</td>
+              <StatusTask interrupt />
             </tr>
           </tbody>
         </table>

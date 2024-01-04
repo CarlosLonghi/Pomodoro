@@ -4,10 +4,10 @@
 
 /* Navigation Styles */
 .nav-link {
-  @apply text-white border-b-2 pb-1 border-b-gray-500 hover:border-b-green-500 transition duration-200 ease-in-out outline-none focus:border-green-400;
+  @apply text-white border-b-2 pb-1 border-b-gray-500 hover:border-b-green-500 transition duration-200 ease-in-out outline-none focus:text-green-400;
 }
 .nav-link.active {
-  @apply text-green-500 border-b-2 pb-1 border-b-green-500 hover:text-green-400 hover:border-b-green-400 focus:border-b-green-400;
+  @apply text-green-500 border-b-2 pb-1 border-b-green-500 hover:text-green-500 hover:border-b-green-500 focus:text-green-400;
 }
 
 /* Form Styles */
