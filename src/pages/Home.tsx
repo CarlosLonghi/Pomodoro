@@ -1,9 +1,21 @@
 import { Play } from '@phosphor-icons/react'
+import { useForm } from 'react-hook-form'
 
 export function Home() {
+  const { register, handleSubmit, watch } = useForm()
+
+  function handleCreateTime(data: any) {
+    console.log(data)
+  }
+  const isSubmitDisabled = watch('task') && watch('minutesAmount')
+
   return (
     <main className="flex justify-center h-full">
-      <form className="flex flex-col gap-14 items-center justify-center">
+      <form
+        onSubmit={handleSubmit(handleCreateTime)}
+        action=""
+        className="flex flex-col gap-14 items-center justify-center"
+      >
         <div className="text-gray-100 text-base flex gap-2 items-center flex-wrap">
           <label htmlFor="task">Vou trabalhar em</label>
           <input
@@ -12,6 +24,7 @@ export function Home() {
             id="task"
             list="task-suggestions"
             placeholder="Dê um nome ao projeto"
+            {...register('task')}
           />
           <datalist id="task-suggestions">
             <option value="Projeto 1" />
@@ -28,6 +41,7 @@ export function Home() {
             step={5}
             min={5}
             max={120}
+            {...register('minutesAmount', { valueAsNumber: true })}
           />
 
           <span>minutos.</span>
@@ -46,6 +60,7 @@ export function Home() {
         <button
           className="flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-green-500 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed focus:bg-green-700 focus-visible:outline-none"
           type="submit"
+          disabled={!isSubmitDisabled}
         >
           <Play size={30} />
           Iniciar
