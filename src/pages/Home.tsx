@@ -2,8 +2,9 @@ import { Play } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { useState } from 'react'
 
-const newStopwatchSchema = zod.object({
+const cycleSchema = zod.object({
   task: zod.string().min(2, 'Informe a tarefa!'),
   minutesAmount: zod
     .number()
@@ -11,28 +12,49 @@ const newStopwatchSchema = zod.object({
     .max(120, 'O cronômetro deve ser no máximo 120 minutos!'),
 })
 
-// Faz a tipagem automática dos valores dos inputs do formulário com base no newStopwatchSchema
-type NewStopwatchData = zod.infer<typeof newStopwatchSchema>
+// Faz a tipagem automática dos valores dos inputs do formulário com base no cycleSchema
+type CycleData = zod.infer<typeof cycleSchema>
+
+interface Cycle {
+  id: string
+  task: string
+  minutesAmount: number
+}
 
 export function Home() {
-  const { register, handleSubmit, watch, reset } = useForm<NewStopwatchData>({
-    resolver: zodResolver(newStopwatchSchema),
+  const [cycles, setCycles] = useState<Cycle[]>([])
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+
+  const { register, handleSubmit, watch, reset } = useForm<CycleData>({
+    resolver: zodResolver(cycleSchema),
     defaultValues: {
       task: '',
       minutesAmount: 0,
     },
   })
 
-  function handleCreateStopwatch(data: NewStopwatchData) {
-    console.log(data)
+  function handleCreateCycle(data: CycleData) {
+    const newCycle: Cycle = {
+      id: String(new Date().getTime()),
+      task: data.task,
+      minutesAmount: data.minutesAmount,
+    }
+
+    setCycles((state) => [...state, newCycle])
+    setActiveCycleId(newCycle.id)
+
     reset()
   }
+
+  const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
+  console.log(activeCycle)
+
   const isSubmitDisabled = watch('task')
 
   return (
     <main className="flex justify-center h-full">
       <form
-        onSubmit={handleSubmit(handleCreateStopwatch)}
+        onSubmit={handleSubmit(handleCreateCycle)}
         action=""
         className="flex flex-col gap-14 items-center justify-center"
       >
