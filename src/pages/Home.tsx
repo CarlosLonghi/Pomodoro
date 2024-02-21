@@ -11,21 +11,28 @@ const newStopwatchSchema = zod.object({
     .max(120, 'O cronômetro deve ser no máximo 120 minutos!'),
 })
 
-export function Home() {
-  const { register, handleSubmit, watch, formState } = useForm({
-    resolver: zodResolver(newStopwatchSchema),
-  })
-  console.log(formState.errors)
+// Faz a tipagem automática dos valores dos inputs do formulário com base no newStopwatchSchema
+type NewStopwatchData = zod.infer<typeof newStopwatchSchema>
 
-  function handleStopwatch(data: any) {
+export function Home() {
+  const { register, handleSubmit, watch, reset } = useForm<NewStopwatchData>({
+    resolver: zodResolver(newStopwatchSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
+  })
+
+  function handleCreateStopwatch(data: NewStopwatchData) {
     console.log(data)
+    reset()
   }
   const isSubmitDisabled = watch('task')
 
   return (
     <main className="flex justify-center h-full">
       <form
-        onSubmit={handleSubmit(handleStopwatch)}
+        onSubmit={handleSubmit(handleCreateStopwatch)}
         action=""
         className="flex flex-col gap-14 items-center justify-center"
       >
