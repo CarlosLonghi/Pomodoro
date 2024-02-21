@@ -1,18 +1,31 @@
 import { Play } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
+
+const newStopwatchSchema = zod.object({
+  task: zod.string().min(2, 'Informe a tarefa!'),
+  minutesAmount: zod
+    .number()
+    .min(5, 'O cronômetro deve ser no mínimo 5 minutos!')
+    .max(120, 'O cronômetro deve ser no máximo 120 minutos!'),
+})
 
 export function Home() {
-  const { register, handleSubmit, watch } = useForm()
+  const { register, handleSubmit, watch, formState } = useForm({
+    resolver: zodResolver(newStopwatchSchema),
+  })
+  console.log(formState.errors)
 
-  function handleCreateTime(data: any) {
+  function handleStopwatch(data: any) {
     console.log(data)
   }
-  const isSubmitDisabled = watch('task') && watch('minutesAmount')
+  const isSubmitDisabled = watch('task')
 
   return (
     <main className="flex justify-center h-full">
       <form
-        onSubmit={handleSubmit(handleCreateTime)}
+        onSubmit={handleSubmit(handleStopwatch)}
         action=""
         className="flex flex-col gap-14 items-center justify-center"
       >
