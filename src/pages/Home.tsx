@@ -1,4 +1,4 @@
-import { Play } from '@phosphor-icons/react'
+import { Play, HandPalm } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
@@ -21,6 +21,7 @@ interface Cycle {
   task: string
   minutesAmount: number
   startDate: Date
+  interruptedDate?: Date
 }
 
 export function Home() {
@@ -68,6 +69,19 @@ export function Home() {
     reset()
   }
 
+  function handleInterruptCycle() {
+    setCycles(
+      cycles.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
+        } else {
+          return cycle
+        }
+      }),
+    )
+    setActiveCycleId(null)
+  }
+
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
   const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
@@ -100,6 +114,7 @@ export function Home() {
             id="task"
             list="task-suggestions"
             placeholder="Dê um nome ao projeto"
+            disabled={!!activeCycle}
             {...register('task')}
           />
           <datalist id="task-suggestions">
@@ -117,6 +132,7 @@ export function Home() {
             step={5}
             min={5}
             max={90}
+            disabled={!!activeCycle}
             {...register('minutesAmount', { valueAsNumber: true })}
           />
 
@@ -133,14 +149,25 @@ export function Home() {
           <span className="span-timer">{seconds[1]}</span>
         </div>
 
-        <button
-          className="flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-green-500 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed focus:bg-green-700 focus-visible:outline-none"
-          type="submit"
-          disabled={!isSubmitDisabled}
-        >
-          <Play size={30} />
-          Iniciar
-        </button>
+        {activeCycle ? (
+          <button
+            className="flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-red-600/90 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed focus:bg-red-700 focus-visible:outline-none hover:bg-red-700 transition ease-in-out"
+            type="button"
+            onClick={handleInterruptCycle}
+          >
+            <HandPalm size={30} />
+            Interromper
+          </button>
+        ) : (
+          <button
+            className="flex items-center justify-center gap-2 text-gray-100 px-8 py-4 w-full bg-green-500 rounded-lg disabled:brightness-75 disabled:cursor-not-allowed focus:bg-green-700 focus-visible:outline-none"
+            type="submit"
+            disabled={!isSubmitDisabled}
+          >
+            <Play size={30} />
+            Iniciar
+          </button>
+        )}
       </form>
     </main>
   )
