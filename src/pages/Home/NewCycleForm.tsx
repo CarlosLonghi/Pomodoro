@@ -1,26 +1,10 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as zod from 'zod'
-
-const cycleSchema = zod.object({
-  task: zod.string().min(2, 'Informe a tarefa!'),
-  minutesAmount: zod
-    .number()
-    .min(5, 'O cronômetro deve ser no mínimo 5 minutos!')
-    .max(90, 'O cronômetro deve ser no máximo 90 minutos!'),
-})
-
-// Faz a tipagem automática dos valores dos inputs do formulário com base no cycleSchema
-type CycleData = zod.infer<typeof cycleSchema>
+import { useContext } from 'react'
+import { CyclesContext } from '.'
+import { useFormContext } from 'react-hook-form'
 
 export function NewCycleForm() {
-  const { register, handleSubmit, watch, reset } = useForm<CycleData>({
-    resolver: zodResolver(cycleSchema),
-    defaultValues: {
-      task: '',
-      minutesAmount: 0,
-    },
-  })
+  const { activeCycle } = useContext(CyclesContext)
+  const { register } = useFormContext()
 
   return (
     <div className="text-gray-100 text-base flex gap-2 items-center flex-wrap">
