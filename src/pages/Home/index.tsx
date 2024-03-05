@@ -28,14 +28,19 @@ export function Home() {
       minutesAmount: 0,
     },
   })
-  const { handleSubmit, watch /*, reset */ } = newCycleForm
+  const { handleSubmit, watch, reset } = newCycleForm
+
+  function handleCreateCycle(data: CycleData) {
+    createCycle(data)
+    reset()
+  }
 
   const isSubmitDisabled = watch('task')
 
   return (
     <main className="flex justify-center h-full">
       <form
-        onSubmit={handleSubmit(createCycle)}
+        onSubmit={handleSubmit(handleCreateCycle)}
         action=""
         className="flex flex-col gap-14 items-center justify-center"
       >
