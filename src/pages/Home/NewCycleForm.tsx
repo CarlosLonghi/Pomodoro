@@ -29,7 +29,6 @@ export function NewCycleForm() {
         className="input-minutes mx-2 w-16"
         type="number"
         id="minutesAmount"
-        placeholder="00"
         step={5}
         min={5}
         max={90}

@@ -28,23 +28,23 @@ th {
   @apply bg-gray-400 text-gray-100 text-sm text-left px-5 py-4;
 }
 th:first-child {
-  @apply rounded-tl-lg pl-6;
+  @apply rounded-tl-lg pl-2 md:pl-6;
 }
 th:last-child {
-  @apply rounded-tr-lg pr-6;
+  @apply rounded-tr-lg pr-2 md:pr-6;
 }
 
 td {
-  @apply bg-gray-500 border-t-4 border-gray-600 p-4 text-sm text-gray-200;
+  @apply bg-gray-500 border-t-4 border-gray-600 p-2 md:p-4 text-sm text-gray-200;
 }
 td:first-child {
-  @apply pl-6 w-1/2;
+  @apply pl-2 w-auto md:pl-6 md:w-1/2;
 }
 td:last-child {
-  @apply pr-6;
+  @apply pr-2 md:pr-6;
 }
 
 /* Timer Styles */
 .span-timer {
-  @apply py-8 px-4 bg-gray-500 rounded overflow-hidden cursor-default; 
+  @apply py-2 px-1 text-gray-100 text-8xl md:text-9xl bg-gray-500 rounded overflow-hidden cursor-default md:py-8 md:px-4; 
 }

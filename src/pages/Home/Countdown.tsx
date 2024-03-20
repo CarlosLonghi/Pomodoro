@@ -59,10 +59,12 @@ export function Countdown() {
   }, [minutes, seconds, activeCycle])
 
   return (
-    <div className="flex items-center justify-between w-full font-timer text-gray-100 text-9xl">
+    <div className="flex items-center justify-center gap-2 sm:gap-4 lg:gap-6 font-timer">
       <span className="span-timer">{minutes[0]}</span>
       <span className="span-timer">{minutes[1]}</span>
-      <span className="text-green-500 overflow-hidden cursor-default">:</span>
+      <span className="text-green-500 overflow-hidden cursor-default text-6xl md:text-9xl">
+        :
+      </span>
       <span className="span-timer">{seconds[0]}</span>
       <span className="span-timer">{seconds[1]}</span>
     </div>

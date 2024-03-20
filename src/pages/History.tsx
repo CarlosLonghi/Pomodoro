@@ -7,10 +7,10 @@ import { CyclesContext } from '../contexts/CyclesContext'
 export function History() {
   const { cycles } = useContext(CyclesContext)
   return (
-    <main className="flex-1 px-12 py-8 flex flex-col">
+    <main className="flex-1 overflow-auto py-8 flex flex-col">
       <h1 className="text-2xl text-gray-100 text-center">Histórico</h1>
 
-      <div className="flex-1 overflow-auto mt-8">
+      <div className="flex-1 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-600 overflow-x-auto mt-8">
         <table className="w-full border-collapse">
           <thead>
             <tr>

@@ -25,7 +25,7 @@ export function Home() {
     resolver: zodResolver(cycleSchema),
     defaultValues: {
       task: '',
-      minutesAmount: 0,
+      minutesAmount: 5,
     },
   })
   const { handleSubmit, watch, reset } = newCycleForm
@@ -42,7 +42,7 @@ export function Home() {
       <form
         onSubmit={handleSubmit(handleCreateCycle)}
         action=""
-        className="flex flex-col gap-14 items-center justify-center"
+        className="flex flex-col gap-20 md:gap-14 items-center justify-center w-full"
       >
         <FormProvider {...newCycleForm}>
           <NewCycleForm />
